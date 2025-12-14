@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Invitación Baby Shower</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ffe8f5, #fff0fb, #ffe2f3);
+        background-size: 400% 400%;
+        animation: bgMove 12s ease infinite;
+        overflow-x: hidden;
+    }
+
+    @keyframes bgMove {
+        0% {background-position: 0% 50%;}
+        50% {background-position: 100% 50%;}
+        100% {background-position: 0% 50%;}
+    }
+
+    .container {
+        text-align: center;
+        padding: 40px 20px;
+        animation: fadeIn 2s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(25px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+        width: 90%;
+        max-width: 650px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.93);
+        border-radius: 30px;
+        padding: 40px 30px;
+        box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        backdrop-filter: blur(10px);
+        animation: float 4.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-12px); }
+        100% { transform: translateY(0); }
+    }
+
+    h1 {
+        color: #d13c8b;
+        font-size: 55px;
+        margin-bottom: 0;
+        font-weight: 600;
+    }
+
+    h2 {
+        color: #444;
+        font-weight: 400;
+        margin-top: 10px;
+        font-size: 24px;
+    }
+
+    .highlight {
+        font-size: 63px;
+        color: #ff4d94;
+        font-weight: 600;
+        margin: 15px 0;
+    }
+
+    p {
+        color: #555;
+        font-size: 20px;
+        margin-top: 10px;
+        line-height: 1.5;
+    }
+
+    /* Globos */
+    .balloon {
+        position: absolute;
+        width: 90px;
+        opacity: 0.7;
+        animation: floatUp 15s infinite linear;
+    }
+
+    @keyframes floatUp {
+        from { transform: translateY(100vh) rotate(0deg); }
+        to { transform: translateY(-130vh) rotate(12deg); }
+    }
+
+    #music-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #ff7bb3;
+        border-radius: 50%;
+        padding: 15px;
+        font-size: 20px;
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+    }
+
+</style>
+</head>
+<body>
+
+<!-- Globos funcionando -->
+<img src="https://pngimg.com/uploads/balloon/balloon_PNG4964.png" class="balloon" style="left: 5%; animation-delay: 0s;" />
+<img src="https://pngimg.com/uploads/balloon/balloon_PNG4965.png" class="balloon" style="left: 70%; animation-delay: 4s;" />
+<img src="https://pngimg.com/uploads/balloon/balloon_PNG4964.png" class="balloon" style="left: 40%; animation-delay: 2.5s;" />
+<img src="https://pngimg.com/uploads/balloon/balloon_PNG4964.png" class="balloon" style="left: 85%; animation-delay: 6s;" />
+
+<div class="container">
+    <div class="card">
+        
+        <h1>Baby Shower</h1>
+        <h2>Te invitamos a celebrar la llegada de</h2>
+
+        <div class="highlight">Constanza</div>
+
+        <p>
+            Con mucho cariño acompañaremos a<br>
+            <strong>Diana y Raul</strong>
+        </p>
+
+        <p>
+            📅 <strong>Sabado 27 de Diciembre 2025</strong><br>
+            ⏰ <strong>4:00 PM</strong><br>
+            📍 <strong>Río Duero 105B, Las Margaritas, 37468 León de los Aldama, Gto.</strong>
+        </p>
+
+        <!-- Mapa -->
+        <div style="margin-top: 30px;">
+            <h3 style="color:#d13c8b; margin-bottom:10px;">📍 Ubicación del evento</h3>
+
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3068.048326187122!2d-101.68164589999999!3d21.0977531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842bbfbe67602e95%3A0x16a4e70704121b62!2sR%C3%ADo%20Duero%20105B%2C%20Las%20Margaritas%2C%2037468%20Le%C3%B3n%20de%20los%20Aldama%2C%20Gto.!5e1!3m2!1ses-419!2smx!4v1765739036052!5m2!1ses-419!2smx"
+                width="100%"
+                height="300"
+                style="border:0; border-radius:20px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+    </div>
+</div>
+
+<!-- Música -->
+<audio id="bg-music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2021/09/30/audio_bebecito.mp3" type="audio/mpeg">
+</audio>
+
+<div id="music-btn">🎵</div>
+
+<script>
+    const music = document.getElementById("bg-music");
+    const btn = document.getElementById("music-btn");
+
+    btn.onclick = () => {
+        if (music.paused) {
+            music.play();
+            btn.innerHTML = "⏸";
+        } else {
+            music.pause();
+            btn.innerHTML = "🎵";
+        }
+    };
+</script>
+
+</body>
+</html>
